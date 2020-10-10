@@ -1,0 +1,111 @@
+li {
+    display: inline-block;
+}
+
+ul {
+    text-align: center;
+    word-spacing: 10em;
+}
+
+a:hover {
+    color: rebeccapurple;
+}
+
+body {
+    background-color: #659DBD;
+    color: aliceblue;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.test1 {
+    font-family: Snell Roundhand, cursive;
+    font-size: 45;
+    text-align: center;
+}
+
+.test2 {
+    font-size: 33;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+th {
+    height: 50px;
+}
+
+table {
+    table-layout: fixed;
+    width: 50%;
+    color: black;
+    margin-top: 10px;
+}
+
+.center2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tr:hover {
+    background-color: antiquewhite;
+}
+
+tr:nth-child(even) {
+    background-color: gainsboro;
+}
+
+tr:nth-child(odd) {
+    background-color: whitesmoke;
+}
+
+img {
+    width: 45%;
+    border: 2px solid white;
+}
+
+div {
+    margin-left: 25px;
+}
+
+p {
+    text-align: center;
+    margin-right: 25px;
+    line-height: 2px;
+}
+
+.float {
+    float: left;
+    margin-left: 20px;
+}
+
+.center3 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+.indent {
+    margin-left: 20px;
+}
+
+.text {
+    background-color: azure;
+    width: 25%;
+    height: 10%;
+    margin-top: 20px;
+}
+
+.2 {
+    text-align: right;
+}
