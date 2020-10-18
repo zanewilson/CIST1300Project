@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+
+<head>
+	<title> Java Script Basics </title>
+
+	<link rel="stylesheet" type="text/css" href="./tipcalc.css">
+	<h5> PSA: I get displayed even when I am inbetween the head tag of an html file before the body tag</h5>
+</head>
+
+<body>
+	<div id="Output">
+		<H1>Java Script Basic 1</H1>
+	</div>
+	<br>
+	<H2> Assignment 6.... Have some fun with Java Script</H2>
+
+	<button type="button" onclick="doButtonClickStuff()">Click Here</button><br>
+
+	<table>
+
+
+		<tr>
+			<td><label id="Number1lbl" for="Number1lbl">Number 1</label></td>
+			<td><input type="text" id="Number1txt" placeholder="Number 1"></td>
+		</tr>
+		<tr>
+			<td><label id="Number2lbl" for="Number2lbl">Number 2</label></td>
+			<td><input type="text" id="Number2txt" placeholder="Number 2"></td>
+		</tr>
+		<tr>
+			<td><label id="Operation1lbl" for="Operation1lbl">Operation 1</label></td>
+			<td><input type="text" id="Operation1valuetxt" name="Operation 1" placeholder="Operation 1 value"></td>
+		</tr>
+		<tr>
+			<td><label id="Operation2lbl" for="Operation2lbl">Operation 2</label></td>
+			<td><input type="text" id="Operation2valuetxt" name="Operation 2" placeholder="Operation 2 value"></td>
+		</tr>
+		<tr>
+			<td><label id="Operation3lbl" for="Operation3lbl">Operation 3</label></td>
+			<td><input type="text" id="Operation3valuetxt" name="Operation 3" placeholder="Operation 3 value"></td>
+		</tr>
+		<tr>
+			<td><label id="Operation4lbl" for="Operation4lbl">Operation 4</label></td>
+			<td><input type="text" id="Operation4valuetxt" name="Operation 4" placeholder="Operation 4 value"></td>
+		</tr>
+
+	</table>
+
+	<script lang="javascript">
+		
+		/*
+		Write a simple alert as a welcome message here (3 pts)		
+		*/
+		
+		
+		alert("Hi, Welcome to my page!");  
+            
+			/* 
+			
+			Step1
+			Prompt user...Collect your input values here... Store them in variables. Have two prompts and collect the values entered into two variables. These variables will be string variables because prompt usually collects string as input. Use prompt function and variable assignment to take the inputs and store it into variables. (3pts)
+			
+			
+			Step2
+			What you stored are string inputs. so convert them into integer and store in a different variable. use the parseInt() function to do this step. Research parseInt in Google if you have to.
+			You have to do the above step two times since you collected two variables as input. (3 pts)
+			
+			
+			Step3
+			Now you have two integer variables. Change the text boxes that correspond to the number1 label and number2 labels to have the values you collected. The statement to change the textbox values looks something very close to the statement below
+			document.getElementById('<id of the element you want to change>').value=<variable>; (3pts)
+			
+			
+			
+			*/
+				function doButtonClickStuff() 
+		{
+            var input1 = prompt(" Please enter a number");
+            var integer1 = parseInt(input1);
+            var input2 = prompt ("Please enter a second number", 2);
+            var integer2 = parseInt(input2);
+                    
+            document.getElementById("Number1txt").value= integer1;
+            document.getElementById("Number2txt").value= integer2;
+            
+            var sum = integer1+integer2;
+            var difference = integer1-integer2;
+            var multiply = integer1*integer2;
+            var quotient = integer1/integer2;
+            
+            document.getElementById("Operation1valuetxt").value= sum;
+            document.getElementById("Operation2valuetxt").value= difference;
+            document.getElementById("Operation3valuetxt").value= multiply;
+            document.getElementById("Operation4valuetxt").value= quotient;
+            
+            document.getElementById("Operation1lbl").innerHTML = ("Sum : ");
+            document.getElementById("Operation2lbl").innerHTML = ("Difference : ");
+            document.getElementById("Operation3lbl").innerHTML = ("Multiply : ");
+            document.getElementById("Operation4lbl").innerHTML = ("Quotient : ");
+            
+            if (integer2 <1) {
+                    document.getElementById("Operation4valuetxt").value= "N/A";
+            } 
+            
+			/*
+		
+			Step 4
+			Do the 4 operations here... Multiply, Add, divide, subtract.. 
+			Use everything you learnt from the postread on how to work with variables. Store the output of the operations in 4 separate variables (sum, diff, quotient, product)... 
+			If you are getting adventurous check if you are trying to divide by zero and if yes then make the value of the variable quotient as N/A... This will require for you to use the if construct in programming. (6pts)
+		
+	
+			*/
+
+			
+			/*
+			Step 5 (12 pts)
+			
+			Change the labels to call out the operation. Change the corresponding textbox to call out the result of the operation.
+			For example instead of Operation 1 make the label say "Sum". 
+			For the textbox right beside it make the textbox say the value of the variable sum
+			To do these two things you will use the following commands
+			 
+				document.querySelector("#Operation1lbl").innerHTML="Sum : ";
+				document.getElementById('Operation1valuetxt').value=sum;
+				
+			Step 6 (5 pts bonus credit)
+				write the code to check for division by zero and mark that text box as N/A. Google how to do if command in Javascript.	
+			
+			*/
+            
+    
+            
+        
+			
+
+
+		}
+	</script>
+</body>
+
+</html>
