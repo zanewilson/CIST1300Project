@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title> Java Script Basics </title>
+	<link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+
+<body>
+	<div class="grid-container">
+		<div class="Example1">
+			<h1> Assignment 6</h1>
+			<h2>Number Operations</h2>
+			<table>
+
+
+				<tr>
+					<td><label id="Number1lbl" for="Number1lbl">Number 1</label></td>
+					<td><input type="text" id="Number1txt" placeholder="Number 1"></td>
+				</tr>
+				<tr>
+					<td><label id="Number2lbl" for="Number2lbl">Number 2</label></td>
+					<td><input type="text" id="Number2txt" placeholder="Number 2"></td>
+				</tr>
+				<tr>
+					<td><label id="Operation1lbl" for="Operation1lbl">Operation 1</label></td>
+					<td><input type="text" id="Operation1valuetxt" name="Operation 1" placeholder="Operation 1 value"></td>
+				</tr>
+				<tr>
+					<td><label id="Operation2lbl" for="Operation2lbl">Operation 2</label></td>
+					<td><input type="text" id="Operation2valuetxt" name="Operation 2" placeholder="Operation 2 value"></td>
+				</tr>
+				<tr>
+					<td><label id="Operation3lbl" for="Operation3lbl">Operation 3</label></td>
+					<td><input type="text" id="Operation3valuetxt" name="Operation 3" placeholder="Operation 3 value"></td>
+				</tr>
+				<tr>
+					<td><label id="Operation4lbl" for="Operation4lbl">Operation 4</label></td>
+					<td><input type="text" id="Operation4valuetxt" name="Operation 4" placeholder="Operation 4 value"></td>
+				</tr>
+				<tr>
+					<td><button type="button" onclick="doAssignment6()">Click Here</button></td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="Example-2">
+			<h1> Assignment 7</h1>
+			<h2>Tip Calculator</h2>
+			<div id="calculator" class="tipcalc">
+				<form class=tipcalc>
+						<p>
+							How much was your bill?
+							<br>
+								$ <input id="billamt" type="text" placeholder="Bill Amount">
+
+							<br><br>How was your service?
+							<br>
+								<select id="serviceQual">
+									<option disabled selected value="0">-- Choose an Option --</option>
+									<option value="Outstanding">30&#37; &#45; Outstanding</option>
+									<option value="Good">20&#37; &#45; Good</option>
+									<option value="Okay">15&#37; &#45; It was OK</option>
+									<option value="Bad">10&#37; &#45; Bad</option>
+									<option value="Terrible">5&#37; &#45; Terrible</option>
+								</select>
+
+
+							<br><br>How many people are sharing the bill? <br>
+								<input id="noofPeople" type="text" placeholder="Number of People"> people 
+							<br><br>
+
+								<button type="button" id="calculate" onclick="calculateTip()">Calculate Tip!</button>
+								<!-- The above onlick won't do anything. You need to write a slightly different code. Look at the next sentence   -->
+								<!-- To get value 1 you have to use document.getElementById('billamt').value -->
+							    <!-----5 pts> <-->
+							    <sup>$</sup>
+							    <span id="calculatedtipamt" class="tip">0.00</span>
+								<small id="each"> &nbsp; &nbsp;each</small>
+      
+						</p>
+					</form>
+			</div>
+			
+
+		</div>
+		<div class="Example-3">
+			<h1> Assignment 8</h1>
+		</div>
+		<div class="Example-4">
+			<h1> Assignment 9</h1>
+		</div>
+	</div>
+
+	<script lang="javascript">
+		
+
+		function doAssignment6() 
+		{
+
+			/* 
+			
+			Prompt user...Collect your input values here... Store them in variables. Have two prompts and collect the values entered into two variables. These variables will be string variables because prompt usually collects string as input.
+			
+			What you stored are string inputs. so convert them into integer and store in a different variable. use the parseInt() function to do this step. Research parseInt in Google if you have to.
+			You have to do the above step two times since you collected two variables as input.
+			
+			Now you have two integer variables. Change the text boxes that correspond to the number1 label and number2 labels to have the values you collected. The statement to change the textbox values looks something very close to the statement below
+			document.getElementById('<id of the element you want to change>').value=<variable>;
+			
+			
+			*/
+
+			var string1 = prompt("Enter number 1");
+			var string2 = prompt("Eneter number 2");
+
+			var number1 = parseInt(string1);
+			var number2 = parseInt(string2);
+
+			document.getElementById('Number1txt').value = number1;
+			document.getElementById('Number2txt').value = number2;
+
+			/*
+		
+		Do the 4 operations here... Multiply, Add, divide, subtract.. 
+		Use everything you learnt from the postread on how to work with variables. Store the output of the operations in 4 separate variables (sum, diff, quotient, product)... 
+		If you are getting adventurous check if you are trying to divide by zero and if yes then make the value of the variable quotient as N/A... This will require for you to use the if construct in programming.
+		
+	
+		*/
+
+			var sum = number1 + number2;
+			var product = number1 * number2;
+			var quotient = number1 / number2;
+			var diff = number1 - number2;
+
+
+			/*
+			
+			Change the labels to call out the operation. Change the corresponding textbox to call out the result of the operation.
+			For example instead of Operation 1 make the label say "Sum". 
+			For the textbox right beside it make the textbox say the value of the variable sum
+			To do these two things you will use the following commands
+			
+				document.querySelector("#Operation1lbl").innerHTML="Sum : ";
+				document.getElementById('Operation1valuetxt').value=sum;
+			
+			*/
+
+			document.querySelector("#Operation1lbl").innerHTML = "Sum : ";
+			document.getElementById('Operation1valuetxt').value = sum;
+
+
+
+		}
+		
+		function calculateTip() 
+		{
+            var float = document.getElementById("billamt").value;
+            var billamount = parseFloat(float);
+            alert("Your bill is " + billamount + " dollars");
+            var servicequality = document.getElementById("serviceQual").value;
+            alert("Your service was " + servicequality);
+            var integer1 = document.getElementById("noofPeople").value;
+            var numberofpeople = parseInt(integer1);
+            alert("The bill is split by " + numberofpeople + " people");
+           
+            if (servicequality.localeCompare("Outstanding") == 0) {
+                servicequality = 0.3
+            }
+            else if (servicequality.localeCompare("Good") == 0){
+                servicequality = 0.2
+            }
+            else if (servicequality.localeCompare("Okay") == 0) {
+                servicequality = 0.15
+            }
+            else if (servicequality.localeCompare("Bad") == 0){
+                servicequality = 0.1
+            }
+            else if(servicequality.localeCompare("Terrible") == 0){
+                servicequality = 0.05
+            }
+            
+            var Quality = parseFloat (servicequality);
+            var TipAmountPerPerson = (billamount * servicequality)/numberofpeople;
+            if (TipAmountPerPerson < 0){
+                TipAmountPerPerson = "N/A";
+                    alert ("You did something wrong. Re-enter information.");
+                    
+            }
+            var Tip = TipAmountPerPerson.toFixed(2) ;
+            document.getElementById("calculatedtipamt").innerHTML = Tip; 
+            
+            
+        
+			/*  
+			
+			The function calculateTip will get invoked with three input variable from the html form above when the "Calculate Tip" button is pressed. 
+			Write some statements here to double check that the vakue you are entering is the value that gets passed on here. 
+			May be use an alert or something. You can also check it in the Googleconsole.
+			
+			Notice that the function operands have slightly different names than the ids of the corresponding HTML elements. This is by design. When you work in the Google Console make sure you are using the right variables
+			
+			Also make sure that the variables you are receiving (which is a mix of integers and string are passed on to the temp variables of the right type so you can do the calculation.Make sure you do the parseInt for the number of people, parsefloat function for the bill amount. servicequality can remain as a string.
+			
+			
+			(10 pts)
+			
+			*/
+			
+
+			/* Write code here to check for the value of the incoming servicequality variable and then determine tippercenatge. If it is "okay" tip percentage is 15%, "good" tip percentage is 20%, if it is "outstanding" tip percentage is 30%, if it is "terrible" tip percentage is 5%, if it is "bad" tip percentage is 10%. To check the incoming operand servicequality's value you have to using a multiple if then else condition and set tippercentage  accordingly. Tippercentage should be a float variable as 10% is .1, 15% is .15 for calculations. To check the servicequality variable which is a string use the localCompare function for comparing string   
+			*/
+			
+			/* var tippercentage;
+			search Google for localcompare function to compare strings...
+				
+				if (check to see if servicequality was "outstanding" using stringlocalcompare)
+																			
+				{
+				
+				}
+				else if (check to see if servicequality was "good")
+				{
+				
+				}
+				and so on
+				
+				google search on if-else if construct... google search on localcompare string function
+				
+			(10 pts)	
+			*/
+			
+			/* Write code here to calculate the tip amount. You know the tip percentage (from the previous step), bill amount (passed as an operand and massaged by you) and the number of people (passed as an operand and massaged by you). Store it in a variable called tip amount per person. Alert it out if needed to check that it's working.
+			
+			
+		
+				
+			(10 pts)	
+			*/
+			
+			
+			/* Write code here to find the html element calculatedtipamt and change the inner html for that element based on the tip amount you calculated in the step above 
+				Use the document.getElementById(<htmlelementid>).innerHTML=<value>; construct from the previous exercise
+				
+			
+			(5 pts)
+			*/
+				
+			
+			
+			
+		}
+			
+
+		
+	</script>
+</body>
+
+</html>

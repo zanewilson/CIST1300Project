@@ -1,0 +1,51 @@
+.grid-container 
+{
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr;
+  grid-template-rows: 1.7fr 1.8fr;
+  gap: 10px 14px;
+  grid-template-areas:
+    "Example1 Example-2"
+    "Example-3 Example-4";
+}
+
+.Example1 
+{ 
+	grid-area: Example1; 
+}
+
+table
+{
+	
+	font-size: 20px;
+    font-weight: bold;
+	border-color: yellow;
+	border-style: solid;
+	
+}
+
+
+.tipcalc
+{
+	
+	font-size: 20px;
+	font-family: "Arial Narrow", Helvetica, sans-serif;
+    font-weight: bold;
+	border-color: forestgreen;
+	border-style: solid;
+	border-spacing: 15px;
+	
+}
+
+.tip
+{
+	font-size: 20px;
+	font-family: Helvetica, sans-serif;
+	color: blue;
+}
+
+.Example-2 { grid-area: Example-2; }
+
+.Example-3 { grid-area: Example-3; }
+
+.Example-4 { grid-area: Example-4; }
