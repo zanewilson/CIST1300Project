@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="script.css">
+    <title>Generate Countries table </title>
+    <!-- Do make a reference to an external stylesheet file. Add suitable headers etc -->
+    <!-- // 5 pts -->
+</head>
+
+<body>
+
+
+    <!-- Modify this section by using the appropriate styling elements in your style sheet -->
+    <!-- // 5 pts -->
+    <h1> Add A Country and Capital With the Generator Below</h1>
+    <table id=table1>
+
+        <tr>
+            <td><label id="Number1lbl" for="Number1lbl">Max Number of Countries</label></td>
+            <td><input type="text" id="maxctryNumber" placeholder="3"></td>
+        </tr>
+        <tr>
+            <td><label id="Number1lbl" for="Number1lbl">Country Name</label></td>
+            <td><input type="text" id="ctryNametxt" placeholder="Country Name"></td>
+        </tr>
+
+        <tr>
+            <td><label id="Number2lbl" for="Number2lbl">CountryCapital</label></td>
+            <td><input type="text" id="ctryCapitaltxt" placeholder="Country Capital"></td>
+        </tr>
+        <tr>
+            <td><label id="Number3lbl" for="Number3lbl">CountryPopulation</label></td>
+            <td><input type="text" id="ctryPoplntxt" placeholder="1,000,000"></td>
+        </tr>
+        <tr>
+            <td><button type="button" id="addcountry" onclick="addcountry()">Add country</button></td>
+            <td><button type="button" id="generatectry" onclick="generatecountrieslist()">Generate Countries</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" id="sortcountryasc" onclick="sortcountries()">Country Ascending</button></td>
+            <td><button type="button" id="sortcptlasc" onclick="sortcptlascending()">Capital Ascending</button></td>
+        </tr>
+    </table>
+
+
+    <br><br><br>
+    <!-- These div sections here handle the table generation of the country list. It gets expanded at run time by the javascript code when you press the buttons. -->
+    <!-- These div sections are currently formatted to give tables one below the other. Use your imagination and try formatting them side by side	-->
+    <!-- // 5 pts -->
+    <div id="tableContent"></div>
+    <div id="ascendingcountry"></div>
+    <div id="ascendingcapital"></div>
+    <script>
+        var defaultcountrylist = 3;
+
+        //Declaring and defining string array variables one for country, one for capitals that we want to use. Prepopulating them with three values.
+        var userinputcountry = ["Norway", "Sweden", "Denmark"];
+        var userinputcptl = ["Oslo", "Stockholm", "Copenhagen"];
+
+        //Declaring and defining object array for countrylist. Every country object has three attributes under it as you can see below. This initial country array is prepopulated with three countries.	
+        let countrylist = [{
+                "name": "Norway",
+                "capital": "Oslo",
+                "population": "5,421,000",
+
+            },
+            {
+                "name": "Sweden",
+                "capital": "Stockholm.",
+                "population": "10,100,000",
+            },
+            {
+                "name": "Denmark",
+                "capital": "Copenhagen",
+                "population": "5,800,000",
+            }
+        ];
+
+
+        // This is the javascript function to call and modify when we click add country
+        // Use the push function
+        function addcountry() {
+            var lcladdedcountry = document.getElementById('ctryNametxt').value;
+            var lcladdedcptl = document.getElementById('ctryCapitaltxt').value;
+            var lclpopln = document.getElementById('ctryPoplntxt').value;
+
+
+            var lclcountryduplcheck = 1;
+            var lclcptlduplcheck = 1;
+
+            console.log('Adding a country here');
+            console.log('Count is ' + userinputcountry.length);
+
+            for (i = 0;
+                (i < userinputcountry.length && lclcountryduplcheck != 0 && lclcptlduplcheck != 0); i++) {
+
+                console.log('Comparing country ' + lcladdedcountry.toUpperCase() + ' with ' + userinputcountry[i].toUpperCase());
+                console.log(' Comparison Result ' + lcladdedcountry.toUpperCase().localeCompare(userinputcountry[i].toUpperCase()) + ' after comparison');
+
+                lclcountryduplcheck = (lcladdedcountry.toUpperCase()).localeCompare(userinputcountry[i].toUpperCase());
+                lclcptlduplcheck = (lcladdedcptl.toUpperCase()).localeCompare(userinputcptl[i].toUpperCase());
+
+            }
+
+            if (lclcountryduplcheck != 0 && lclcptlduplcheck != 0) {
+                alert('No duplicates were found... Country will be added');
+                userinputcountry.push(lcladdedcountry);
+                userinputcptl.push(lcladdedcptl);
+                countrylist.push({
+                    name: lcladdedcountry,
+                    capital: lcladdedcptl,
+                    population: lclpopln
+                });
+                defaultcountrylist++;
+            } else {
+                alert('There was either a country or a capital already in this name. Please check your inputs');
+            }
+
+
+
+            // Use the push function to add the two local variables lcladdedcopuntry and lcladdedcptl to the string array variables that were defined earlier and prepopulated with 3 variables. Do google tofind how to push additional elements to a string array
+
+            /*5 pts */
+
+
+            //Use the push function to  add a new country to the countrylist object array that was previously defined. It is similar to adding or pushing a single value to a string counter. Here instead of one value you need to add three values since the country object is made of three attributes. Do google to find how to push objects to an object array. 
+
+
+            /* 5 pts */
+
+
+
+            /* Increasing the number of countries count by 1 since you have successfully added a country */
+
+            document.getElementById('maxctryNumber').value = defaultcountrylist;
+            document.getElementById('ctryNametxt').value = '';
+            document.getElementById('ctryCapitaltxt').value = '';
+            document.getElementById('ctryPoplntxt').value = '';
+
+
+            /* Write code here to clean out the html elements since you have now added the country. Present a success message that the country was added. Update the maxNumberofCountries added value 
+            /*5 pts */
+
+        }
+
+
+        function generatecountries() {
+
+            const tmpl = (userinputcountry, userinputcptl) => `
+				<table><thead>
+				<tr><th>Country<th>Capital<tbody>
+				${userinputcountry.map( (cell, index) => `
+					<tr><td>${cell}<td>${userinputcptl[index]}</tr>
+				`).join('')}
+				</table>`;
+
+            tableContent.innerHTML = tmpl(userinputcountry, userinputcptl);
+
+
+            /*var tmpl ='<h2> There are ' + defaultcountrylist + ' countries so far added to the list </h2>';
+            tableContent.innerHTML=tmpl; */
+
+        }
+
+        function generatecountrieslist() {
+            var body = document.getElementById('tbody');
+            var tableHTML = "<table><thead><tr><th>Country<th>Capital<th>Population</thead><tbody>";
+            for (var i = 0; i < countrylist.length; i++) {
+                tableHTML += "<tr>";
+                tableHTML += "<td>" + countrylist[i].name + "</td>";
+                tableHTML += "<td>" + countrylist[i].capital + "</td>";
+                tableHTML += "<td>" + countrylist[i].population + "</td>";
+                tableHTML += "</tr>";
+            }
+
+
+            /* Write code here to loop through countrylist array object (each country is a separate row) <tr> and then list out each attribute under country list array objectseparated by <td> </td> */
+            /* You will have to use a for loop or a while loop to make sure you have gone through all the objects in the countrylist array object */
+            /* Do go through google and search for code examples on how to take an array of objects and display them as a table */
+            /* 15 pts */
+
+            tableHTML += "</tbody></table>";
+            tableContent.innerHTML = tableHTML;
+
+
+
+        }
+
+        function sortcountries() {
+
+            countrylist.sort((a, b) => a.name.toUpperCase().localeCompare(b.name.toUpperCase()));
+            var tableHTML2 = "<table><thead><tr><th>Country<th>Capital<th>Population</thead><tbody>";
+
+
+            for (var i = 0; i < countrylist.length; i++) {
+                tableHTML2 += "<tr>";
+                tableHTML2 += "<td>" + countrylist[i].name + "</td>";
+                tableHTML2 += "<td>" + countrylist[i].capital + "</td>";
+                tableHTML2 += "<td>" + countrylist[i].population + "</td>";
+                tableHTML2 += "</tr>";
+                userinputcountry.sort();
+            }
+
+            tableHTML2 += "</tbody></table>";
+            ascendingcountry.innerHTML = tableHTML2;
+
+
+
+
+
+
+
+
+
+            /* Write code here to generate table where the country list has been sorted out in asecending order based on the country name */
+
+            /*PAY CAREFUL ATTENTION */
+
+            /* You will have to write code that is similar to the code in the above function. In addition, you will have to use sort() function */
+            /* We have been using 2 redundant string array variables called userinputcountry and userinputcptl. Well, they are redundant until now */
+
+            /* Do a sort function on the userinputcountry variable and you will see that the order of the countries change in the output you get. Store the output in a local string array. */
+            /* Now use this output stored in a local array. Take every item in the output that is stored in the local arrsy (LOOP THROUGH IT) */
+            /* Do a string compare to the actual country name in the actual country object ctrylist array (Loop through the CountryObject array). */
+            /* If it is a match then write the attributes of the country object from the country object array using <tr><td> like you did in the generate countries list() */
+
+            /* 15 PTS */
+
+        }
+
+        function sortcptlascending() {
+
+            countrylist.sort((a, b) => a.capital.toUpperCase().localeCompare(b.capital.toUpperCase()));
+            var tableHTML3 = "<table><thead><tr><th>Country<th>Capital<th>Population</thead><tbody>";
+
+
+            for (var i = 0; i < countrylist.length; i++) {
+                tableHTML3 += "<tr>";
+                tableHTML3 += "<td>" + countrylist[i].name + "</td>";
+                tableHTML3 += "<td>" + countrylist[i].capital + "</td>";
+                tableHTML3 += "<td>" + countrylist[i].population + "</td>";
+                tableHTML3 += "</tr>";
+            }
+
+            tableHTML3 += "</tbody></table>";
+            ascendingcapital.innerHTML = tableHTML3;
+
+            /* Do everything you did above for sortcountries(). Exceot use the stringarray variable userinputcptl */
+
+
+            /* 15 PTS */
+
+        }
+
+    </script>
+</body>
+
+</html>
